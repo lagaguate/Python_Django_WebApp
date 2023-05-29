@@ -1,36 +1,38 @@
 {% extends "master.html" %}
-
 {% block title %}Blog{% endblock %}
 {% block content %}
-
-  <nav>
-    <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Categorías</a></li>
-      <li><a href="#">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <section>
-    <article>
-      <h2>Titulo del artículo 1</h2>
-      <p>Fecha de publicación: 18 de mayo de 2023</p>
-      <img src="imagen1.jpg" alt="Imagen del artículo 1">
-      <p>Contenido del artículo 1...</p>
-      <a href="#">Leer más</a>
-    </article>
-
-    <article>
-      <h2>Titulo del artículo 2</h2>
-      <p>Fecha de publicación: 20 de mayo de 2023</p>
-      <img src="imagen2.jpg" alt="Imagen del artículo 2">
-      <p>Contenido del artículo 2...</p>
-      <a href="#">Leer más</a>
-    </article>
-
-    <!-- Agrega más artículos aquí -->
-
-  </section>
-
-
-  {% endblock %}
+  <div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="shadow p-4">
+      <nav>
+        <ul>
+          <li>
+            <a href="#">Inicio</a>
+          </li>
+          <li>
+            <a href="#">Categorías</a>
+          </li>
+          <li>
+            <a href="#">Contacto</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <article>
+          <h2>Titulo del artículo 1</h2>
+          <p>Fecha de publicación: 18 de mayo de 2023</p>
+          <img src="imagen1.jpg" alt="Imagen del artículo 1">
+          <p>Contenido del artículo 1...</p>
+          <a href="#">Leer más</a>
+        </article>
+        <article>
+          <h2>Titulo del artículo 2</h2>
+          <p>Fecha de publicación: 20 de mayo de 2023</p>
+          <img src="imagen2.jpg" alt="Imagen del artículo 2">
+          <p>Contenido del artículo 2...</p>
+          <a href="#">Leer más</a>
+        </article>
+        <!-- Agrega más artículos aquí -->
+      </section>
+    </div>
+  </div>
+{% endblock %}

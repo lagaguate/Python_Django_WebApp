@@ -1,29 +1,62 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>{% block title %}{% endblock %}</title>
-  {% load bootstrap5 %}
-  {% bootstrap_css %}
-  {% bootstrap_javascript %}
-</head>
-<body>
-
-<div class="container">
-  <ul class="nav bg-info">
-    <li class="nav-item">
-      <a class="nav-link link-light" href="/">HOME</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link link-light" href="/members">MEMBERS</a>
-    </li>
-  </ul>
-
-  {% block content %}
-  {% endblock %}
-</div>
-</body>
-<footer>
-  <p>Derechos de autor &copy; 2023</p>
-</footer>
-
+<html lang="en">
+  <head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load active_link_tags %}
+    <meta charset="utf-8"/>
+    <meta name="keywords" content="foo,bar"/>
+    <meta name="description" content="foo"/>
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+  </head>
+  <body>
+    <!--
+      Definicion de variables para URL
+-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-lg-4"
+         id="mainnav">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+          {% url 'Home' as url %}
+          <li class="nav-item {% if request.path == url  %}active{%endif%} px-lg-4 ">
+            <a class="nav-link text-expanded" href="{{ url }}">INICIO</a>
+          </li>
+          {% url 'Servicios' as url %}
+          <li class="nav-item px-lg-4 {% if request.path == url %}active{%endif%}">
+            <a class="nav-link text-expanded" href="{{ url }}">SERVICIOS</a>
+          </li>
+          {% url 'Tienda' as url %}
+          <li class="nav-item px-lg-4 {% if request.path == url %}active{%endif%}">
+            <a class="nav-link  text-expanded" href="{{ url }}">TIENDA</a>
+          </li>
+          {% url 'Contacto' as url %}
+          <li class="nav-item px-lg-4 {% if request.path == url %}active{%endif%}">
+            <a class="nav-link text-expanded" href="{{ url }}">CONTACTO</a>
+          </li>
+          {% url 'Blog' as url %}
+          <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
+            <a class="nav-link text-expanded" href="{{ url }}">BLOG</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    {% block content %}{% endblock %}
+  </body>
+  <!-- Remove the container if you want to extend the Footer to full width. -->
+  <div class="container my-5">
+    <section>
+      <!-- Footer -->
+      <footer class="text-center text-white" style="background-color: #0a4275;">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2023 Copyright</div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </section>
+  </div>
+  <!-- End of .container -->
 </html>
