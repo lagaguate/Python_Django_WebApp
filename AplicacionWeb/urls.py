@@ -19,8 +19,11 @@ from django.urls import include, path
 """
    Se ha incluido las urls del ProyectoWebApp con include.
 """
+# En este formato podemos agregar la ruta del proyecto.
+# path('ProyectoWebApp/', include('ProyectoWebApp.urls'))
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ProyectoWebApp/', include('ProyectoWebApp.urls'))
+    path('', include('ProyectoWebApp.urls'))
+
     
 ]

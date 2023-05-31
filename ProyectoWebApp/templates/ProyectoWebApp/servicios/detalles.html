@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+{% block title %}Servicios{% endblock %}
+{% block content %}
+
+<h4>Detalles</h4>
+
+<p><span class="txt_negrita">Titulo:</span> <br> {{servicio.nombre}}</p>
+<p><span class="txt_negrita">Contenido:</span> <br> {{servicio.precio}}</p>
+<p><span class="txt_negrita">Imagen:</span> <br> <img src="{{servicio.imagen.url}}" class="img-fluid"> </p>
+<p><span class="txt_negrita">Creado:</span> <br> {{servicio.created}}</p>
+<p><span class="txt_negrita">Actualizado:</span> <br> {{servicio.updated}}</p>
+
+<!-- Botón para volver a la vista principal (Home) -->
+<a href="../" type="submit" class="btn btn-primary">Volver</a>
+
+{% endblock %}

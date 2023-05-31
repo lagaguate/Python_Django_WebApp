@@ -1,0 +1,30 @@
+{% extends "master.html" %}
+{% block title %}Servicios{% endblock %}
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- {{ form.as_p }} -->
+    <div class="form-group">
+      <label for="titulo" class="txt_negrita">Titulo</label>
+      {{ form.titulo|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+    </div>
+    <div class="form-group">
+      <label for="contenido" class="txt_negrita">Contenido</label>
+      {{ form.contenido|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+      <label for="img" class="txt_negrita">Imagen</label>
+      {{ form.imagen|add_class:"form-control mb-3" }}
+      <p class="txt_negrita">Imagen Actual:</p>
+      <img src="{{servicio.imagen.url}}" class="img-fluid" alt="{{servicio.titulo}}">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+  
+  </form>
+  
+
+{% endblock %}

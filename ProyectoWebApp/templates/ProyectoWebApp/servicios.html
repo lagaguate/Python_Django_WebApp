@@ -6,37 +6,10 @@
       <header>
         <h1>Nuestros Servicios</h1>
       </header>
-      <nav>
-        <ul>
-          <li>
-            <a href="#">Inicio</a>
-          </li>
-          <li>
-            <a href="#">Acerca de</a>
-          </li>
-          <li>
-            <a href="#">Servicios</a>
-          </li>
-          <li>
-            <a href="#">Contacto</a>
-          </li>
-        </ul>
-      </nav>
-      <section>
-        <article>
-          <h2>Servicio 1</h2>
-          <img src="servicio1.jpg" alt="Imagen del servicio 1">
-          <p>Descripción del servicio 1...</p>
-          <a href="#">Más información</a>
-        </article>
-        <article>
-          <h2>Servicio 2</h2>
-          <img src="servicio2.jpg" alt="Imagen del servicio 2">
-          <p>Descripción del servicio 2...</p>
-          <a href="#">Más información</a>
-        </article>
-        <!-- Agrega más servicios aquí -->
-      </section>
+      {% for servicio in servicios %}
+      <h2>{{servicio.titulo}}</h2>
+      <p>{{servicio.contenido}}</p>
+      {%endfor%}
     </div>
   </div>
 {% endblock %}
