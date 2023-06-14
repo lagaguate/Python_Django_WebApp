@@ -22,13 +22,13 @@ from servicios.models import Servicio
 # Create your views here Servicio
 
 class ServicioListado(ListView): 
-    model = Servicio # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py' 
+    model = Servicio # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py' 
 
 
 class ServicioCrear(SuccessMessageMixin, CreateView): 
-    model = Servicio # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py'
-    form = Servicio # Definimos nuestro formulario con el nombre de la clase o modelo 'Postres'
-    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    model = Servicio # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py'
+    form = Servicio # Definimos nuestro formulario con el nombre de la clase o modelo 'Servicio'
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'Servicio' de nuestra Base de Datos 
     success_message = 'Postre Creado Correctamente !' # Mostramos este Mensaje luego de Crear un Postre
  
     # Redireccionamos a la página principal luego de crear un registro o postre
@@ -36,14 +36,14 @@ class ServicioCrear(SuccessMessageMixin, CreateView):
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
 
 class ServicioDetalle(DetailView): 
-    model = Servicio # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py' 
+    model = Servicio # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py' 
 
 
 class ServicioActualizar(SuccessMessageMixin, UpdateView): 
-    model = Servicio # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py' 
-    form = Servicio # Definimos nuestro formulario con el nombre de la clase o modelo 'Postres' 
-    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
-    success_message = 'Postre Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+    model = Servicio # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py' 
+    form = Servicio # Definimos nuestro formulario con el nombre de la clase o modelo 'Servicio' 
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'Servicio' de nuestra Base de Datos 
+    success_message = 'Servcio Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
  
     # Redireccionamos a la página principal luego de actualizar un registro o postre
     def get_success_url(self):               
@@ -57,7 +57,7 @@ class ServicioEliminar(SuccessMessageMixin, DeleteView):
 
     # Redireccionamos a la página principal luego de eliminar un registro o postre
     def get_success_url(self): 
-        success_message = 'Postre Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        success_message = 'Servicio Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
 

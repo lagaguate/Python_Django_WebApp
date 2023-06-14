@@ -1,30 +1,27 @@
 {% extends "master.html" %}
-{% block title %}Servicios{% endblock %}
+{% load widget_tweaks %}
+{% block title %}Servicios-Crear{% endblock %}
 {% block content %}
-
-<form method="post" enctype="multipart/form-data">
-  
-    # Pasamos el 'csrf_token' de seguridad para poder crear un nuevo registro
-    {% csrf_token %}
-    
-    <!-- {{ form.as_p }} -->
-    <div class="form-group">
-      <label for="titulo" class="txt_negrita">Titulo</label>
-      {{ form.titulo|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+<div class="d-flex align-items-center justify-content-center vh-100">
+  <div class="shadow p-4">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        <div class="form-group">
+          <label for="titulo" class="txt_negrita">Titulo</label>
+          {{ form.titulo|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <div class="form-group">
+          <label for="contenido" class="txt_negrita">Contenido</label>
+          {{ form.contenido|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <div class="form-group">
+          <label for="imagen" class="txt_negrita">Imagen</label>
+          {{ form.imagen|add_class:"form-control mb-3" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <a href="./" type="submit" class="btn btn-primary">Cancelar</a>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="contenido" class="txt_negrita">Contenido</label>
-      {{ form.contenido|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
-    </div>
-    
-    <div class="form-group">
-      <label for="imagen" class="txt_negrita">Imagen</label>
-      {{ form.imagen|add_class:"form-control mb-3" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Aceptar</button>
-    <a href="./" type="submit" class="btn btn-primary">Cancelar</a>
-  
-  </form>
-  
+  </div>
 {% endblock %}

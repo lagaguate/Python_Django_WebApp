@@ -1,16 +1,36 @@
 {% extends "master.html" %}
-{% block title %}Servicios{% endblock %}
+{% load widget_tweaks %}
+{% block title %}Servicios detalle{% endblock %}
 {% block content %}
-
-<h4>Detalles</h4>
-
-<p><span class="txt_negrita">Titulo:</span> <br> {{servicio.nombre}}</p>
-<p><span class="txt_negrita">Contenido:</span> <br> {{servicio.precio}}</p>
-<p><span class="txt_negrita">Imagen:</span> <br> <img src="{{servicio.imagen.url}}" class="img-fluid"> </p>
-<p><span class="txt_negrita">Creado:</span> <br> {{servicio.created}}</p>
-<p><span class="txt_negrita">Actualizado:</span> <br> {{servicio.updated}}</p>
-
-<!-- Botón para volver a la vista principal (Home) -->
-<a href="../" type="submit" class="btn btn-primary">Volver</a>
-
+{% csrf_token %}
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="shadow p-4">
+            <h4>Detalles</h4>
+            <p>
+                <span class="txt_negrita">Titulo: {{ servicio.nombre }}</span>
+            </p>
+            <p>
+                <span class="txt_negrita">Contenido:</span>
+                {{ servicio.precio }}
+            </p>
+            <p>
+                <span class="txt_negrita">Imagen:</span>
+                <img src="{{ servicio.imagen.url }}"
+                     alt="{{ servicio.titulo }}"
+                     class="img-fluid"
+                     width="30%"
+                     height="30%"/>
+            </p>
+            <p>
+                <span class="txt_negrita">Creado:</span>
+                {{ servicio.created }}
+            </p>
+            <p>
+                <span class="txt_negrita">Actualizado:</span>
+                {{ servicio.updated }}
+            </p>
+            <!-- Botón para volver a la vista principal (Home) -->
+            <a href="../" type="submit" class="btn btn-primary">Volver</a>
+        </div>
+    </div>
 {% endblock %}

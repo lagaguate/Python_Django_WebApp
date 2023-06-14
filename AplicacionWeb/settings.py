@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ProyectoWebApp',
     'servicios',
     'bootstrap5',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,9 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Activamos 'CookieStorage' que nos permite enviar los mensajes de respuesta al Crear, Eliminar y Actualizar un registro
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 
 

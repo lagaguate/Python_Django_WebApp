@@ -1,56 +1,72 @@
 {% extends "master.html" %}
-{% block title %}Servicios{% endblock %}
+{% block title %}Servicios-Index{% endblock %}
 {% block content %}
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th width="35%">Titulo</th>
-                <th>Contenido</th>
-                <th>imagen</th>
-                <th>Created</th>
-                <th>Updated</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'postres' y los listamos -->
-            {% for servicio in servicios  %}
-                <tr>
-                    <td>{{ servicio.titulo }}</td>
-                    <td>{{ servicio.contenido }}</td>
-                    <td>{{ servicio.imagen }}</td>
-                    <td>
-                        <img src="{{servicio.imagen.url}}"
-                             alt="{{ servicio.titulo }}"
-                             class="img-fluid"
-                             width="7%">
-                    </td>
-                    <td>{{ servicio.created }}</td>
-                    <td>{{ servicio.update }}</td>
-                    <td>
-                        <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->
-                        <form method="POST" action="eliminar/{{ servicio.titulo }}">
-                            {% csrf_token %}
-                            <div class="btn-group">
-                                <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
-                                <a href="detalle/{{ servicio.titulo }}"
-                                   title="Ver"
-                                   type="button"
-                                   class="btn btn-success">Ver</a>
-                                <a href="editar/{{ servicio.titulo }}"
-                                   title="Editar"
-                                   type="button"
-                                   class="btn btn-primary">Editar</a>
-                                <button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button>
-                            </div>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-<div align="left" class="btn_crear mb-3">
-    <a href="crear" type="button" class="btn btn-primary">Crear</a>
-  </div>
-  
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="table-responsive">
+            {% if messages %}
+                <ul class="messages list-group mb-3">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div align="left" class="btn_crear mb-3">
+                <a href="crear" type="button" class="btn btn-primary">Crear</a>
+            </div>
+            <div class="container">
+                <table class="table table-striped table-hover table-dark">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" width="20%">Titulo</th>
+                            <th scope="col" width="35%">Contenido</th>
+                            <th scope="col" width="20%">Imagen</th>
+                            <th scope="col" width="15%">Created</th>
+                            <th scope="col" width="15%">Updated</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'postres' y los listamos -->
+                        {% for servicio in object_list  %}
+                            <tr>
+                                <td>{{ servicio.titulo }}</td>
+                                <td>{{ servicio.contenido }}</td>
+                                <td>
+                                    <img src="{{ servicio.imagen.url }}"
+                                         alt="{{ servicio.titulo }}"
+                                         class="img-fluid"
+                                         width="30%"
+                                         height="30%"/>
+                                </td>
+                                <td>{{ servicio.created|date:"Y-m-d H:i:s" }}</td>
+                                <td>{{ servicio.updated|date:"Y-m-d H:i:s" }}</td>
+                                <td>
+                                    <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->
+                                    <form method="post" action="eliminar/{{ servicio.id }}">
+                                        {% csrf_token %}
+                                        <div class="btn-group">
+                                            <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
+                                            
+                                            <a href="detalles/{{ servicio.id }}"
+                                               title="Ver"
+                                               type="button"
+                                               class="btn btn-success">Ver</a>
+                                            
+                                            <a href="editar/{{ servicio.id }}"
+                                               title="Editar"
+                                               type="button"
+                                               class="btn btn-primary">Editar</a>
+                                            <button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

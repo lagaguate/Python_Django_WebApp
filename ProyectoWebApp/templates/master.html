@@ -4,7 +4,7 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    
+    {% load widget_tweaks %}
     <meta charset="utf-8"/>
     <meta name="keywords" content="foo,bar"/>
     <meta name="description" content="foo"/>
@@ -20,21 +20,20 @@
          id="mainnav">
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      
           {% url 'Home' as url %}
-          <li class="nav-item {% if request.path == url  %}active{%endif%} px-lg-4 ">
+          <li class="nav-item {% if request.path == url  %}active{% endif %} px-lg-4 ">
             <a class="nav-link text-expanded" href="{{ url }}">INICIO</a>
           </li>
-          {% url 'Servicios' as url %}
-          <li class="nav-item px-lg-4 {% if request.path == url %}active{%endif%}">
+          {% url 'leer' as url %}
+          <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
             <a class="nav-link text-expanded" href="{{ url }}">SERVICIOS</a>
           </li>
           {% url 'Tienda' as url %}
-          <li class="nav-item px-lg-4 {% if request.path == url %}active{%endif%}">
+          <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
             <a class="nav-link  text-expanded" href="{{ url }}">TIENDA</a>
           </li>
           {% url 'Contacto' as url %}
-          <li class="nav-item px-lg-4 {% if request.path == url %}active{%endif%}">
+          <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
             <a class="nav-link text-expanded" href="{{ url }}">CONTACTO</a>
           </li>
           {% url 'Blog' as url %}
