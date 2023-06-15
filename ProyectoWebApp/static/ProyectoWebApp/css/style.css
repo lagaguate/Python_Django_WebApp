@@ -1,0 +1,21 @@
+.cell-color {
+    color: rgb(238, 234, 234);
+    background-color:rgb(110, 110, 165);
+    font-size: 18px;
+    align-items: center;
+  }
+
+  img.pequeña{
+    width: 50px;
+    height: 50px;
+  }
+  img.mediana{
+    width: 100px;
+    height: 100px;
+  }
+  img.grande{
+    width: 500px;
+    height: auto;
+  }
+
+  

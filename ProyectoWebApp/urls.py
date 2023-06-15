@@ -37,7 +37,7 @@ urlpatterns = [
         template_name="ProyectoWebApp/servicios/actualizar.html"), name='editar'),
 
     # La ruta 'eliminar' que usaremos para eliminar un registro de la Base de Datos
-    path('ProyectoWebApp/servicios/eliminar/<int:pk>',
+    path('servicios/eliminar/<int:pk>',
          ServicioEliminar.as_view(), name='eliminar'),
 ]
 

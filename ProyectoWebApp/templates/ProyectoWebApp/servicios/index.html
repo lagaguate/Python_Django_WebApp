@@ -1,6 +1,15 @@
 {% extends "master.html" %}
 {% block title %}Servicios-Index{% endblock %}
 {% block content %}
+    <script type="text/javascript">
+    function eliminar() {
+      var x = confirm("Eliminar Producto ?");
+      if (x)
+        return true;
+      else
+        return false;
+    }
+    </script>
     <div class="d-flex align-items-center justify-content-center">
         <div class="table-responsive">
             {% if messages %}
@@ -48,12 +57,10 @@
                                         {% csrf_token %}
                                         <div class="btn-group">
                                             <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
-                                            
                                             <a href="detalles/{{ servicio.id }}"
                                                title="Ver"
                                                type="button"
                                                class="btn btn-success">Ver</a>
-                                            
                                             <a href="editar/{{ servicio.id }}"
                                                title="Editar"
                                                type="button"
