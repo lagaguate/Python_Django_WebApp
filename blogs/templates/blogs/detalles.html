@@ -1,0 +1,53 @@
+{% extends "master.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Servicios detalle{% endblock %}
+{% block content %}
+    {% csrf_token %}
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'ProyectoWebApp/css/style.css' %}"/>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="shadow p-4">
+            <h4>Detalle</h4>
+            <div class="container ">
+                <div class="row rejilla justify-content-start">
+                    <div class="col-3 cell-color">Titulo:</div>
+                    <div class="col-3 align-self-center">{{ servicio.titulo }}</div>
+                </div>
+                <div class="row  justify-content-start">
+                    <div class="col-3 cell-color align-self-end">Contenido</div>
+                    <div class="col-4  align-self-center">{{ servicio.contenido }}</div>
+                </div>
+                <div class="row justify-content-start">
+                    <div class="col-3 cell-color">Imagen:</div>
+                    <div class="col-5 ">
+                        <img src="{{ servicio.imagen.url }}"
+                             alt="{{ servicio.titulo }}"
+                             class="img-fluid grande"
+                             width="100%"
+                             height="auto"/>
+                    </div>
+                </div>
+                <div class="row  justify-content-start">
+                    <div class="col-3 cell-color">Creado:</div>
+                    <div class="col-5 align-self-center">{{ servicio.created }}</div>
+                </div>
+                <div class="row  justify-content-start">
+                    <div class="col-3 cell-color">Actualizado:</div>
+                    <div class="col-5  align-self-center">{{ servicio.updated }}</div>
+                </div>
+                <div class="row  justify-content-end">
+                    <div class="col-3"></div>
+                    <!-- Botón para volver a la vista principal (Home) -->
+                    <br/><br/><br/>
+                    <div class="col-5">
+                        <a href="../" type="submit" class="btn btn-primary">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

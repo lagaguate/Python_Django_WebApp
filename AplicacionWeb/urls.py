@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import include, path
 
 """
-   Se ha incluido las urls del ProyectoWebApp con include.
+   Se ha incluido las urls del PRINCIPAL ProyectoWebApp con include.
 """
 # En este formato podemos agregar la ruta del proyecto.
 # path('ProyectoWebApp/', include('ProyectoWebApp.urls'))
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ProyectoWebApp.urls'))
-
+    path('', include('ProyectoWebApp.urls')),
+    path('servicios/', include('servicios.urls')),
+    path('blogs/', include('blogs.urls')),
     
 ]
