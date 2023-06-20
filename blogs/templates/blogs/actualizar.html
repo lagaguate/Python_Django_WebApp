@@ -1,42 +1,25 @@
 {% extends "master.html" %}
-{% load widget_tweaks %}
 {% block title %}Servicios{% endblock %}
 {% block content %}
-  <div class="d-flex align-items-center justify-content-center vh-100">
-    <div class="shadow p-4">
-      <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <!-- {{ form.as_p }} -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Titulo:</span>
-          {% render_field form.titulo class="form-control" placeholder="Titulo" type="text" %}
+  {% load widget_tweaks %}
+  
+  <section class="h-100 h-custom background-color-custom1">
+    <br/>
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="card border-top border-bottom border-3 border-color-custom1">
+        <div class="shadow p-4">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p class="lead fw-bold mb-5 color-custom1">Categorias</p>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Nombre:</span>
+              {% render_field form.nombre class="form-control" placeholder="Nombre" type="text" %}
+            </div>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+            <a href="../" type="submit" class="btn btn-primary">Volver</a>
+          </form>
         </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Contenido:</span>
-          {% render_field form.contenido class="form-control" placeholder="Contenido" type="textarea" %}
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text mb-3" id="basic-addon1">
-
-           {{ form.imagen }}
-        </span>
-          <!--
-            {% render_field form.imagen class="form-control" type="file" %}
-            -->
-          <!--
-           {{ form.imagen|add_class:"form-control " }} -->
-        </div>
-        <div class="form-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Imagen actual:</span>
-          <img src="{{ servicio.imagen.url }}"
-               alt="{{ servicio.titulo }}"
-               class="img-fluid"
-               width="10%"
-               height="10%"/>
-        </div>
-        <button type="submit" class="btn btn-primary">Aceptar</button>
-        <a href="../" type="submit" class="btn btn-primary">Volver</a>
-      </form>
+      </div>
     </div>
-  </div>
+  </section>
 {% endblock %}

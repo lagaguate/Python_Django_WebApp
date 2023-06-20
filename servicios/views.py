@@ -39,7 +39,7 @@ class ServicioCrear(SuccessMessageMixin, CreateView):
 
     # Redireccionamos a la página principal luego de crear un registro o postre
     def get_success_url(self):
-        return reverse('leer')  # Redireccionamos a la vista principal 'leer'
+        return reverse('leerservicio')  # Redireccionamos a la vista principal 'leer'
 
 
 class ServicioDetalle(DetailView):
@@ -57,7 +57,7 @@ class ServicioActualizar(SuccessMessageMixin, UpdateView):
 
     # Redireccionamos a la página principal luego de actualizar un registro o postre
     def get_success_url(self):
-        return reverse('leer')  # Redireccionamos a la vista principal 'leer'
+        return reverse('leerservicio')  # Redireccionamos a la vista principal 'leer'
 
 
 class ServicioEliminar(SuccessMessageMixin, DeleteView):
@@ -70,4 +70,4 @@ class ServicioEliminar(SuccessMessageMixin, DeleteView):
         # Mostramos este Mensaje luego de Editar un Postre
         success_message = 'Servicio Eliminado Correctamente !'
         messages.success(self.request, (success_message))
-        return reverse('leer')  # Redireccionamos a la vista principal 'leer'
+        return reverse('leerservicio')  # Redireccionamos a la vista principal 'leer'

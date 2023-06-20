@@ -5,12 +5,16 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     {% load widget_tweaks %}
+    {% load static %}
     <meta charset="utf-8"/>
     <meta name="keywords" content="foo,bar"/>
     <meta name="description" content="foo"/>
     <title>
       {% block title %}{% endblock %}
     </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'ProyectoWebApp/css/style.css' %}"/>
   </head>
   <body>
     <!--
@@ -24,7 +28,7 @@
           <li class="nav-item {% if request.path == url  %}active{% endif %} px-lg-4 ">
             <a class="nav-link text-expanded" href="{{ url }}">INICIO</a>
           </li>
-          {% url 'leer' as url %}
+          {% url 'leerservicio' as url %}
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
             <a class="nav-link text-expanded" href="{{ url }}">SERVICIOS</a>
           </li>
@@ -36,7 +40,7 @@
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
             <a class="nav-link text-expanded" href="{{ url }}">CONTACTO</a>
           </li>
-          {% url 'Blog' as url %}
+          {% url 'leerblog' as url %}
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
             <a class="nav-link text-expanded" href="{{ url }}">BLOG</a>
           </li>

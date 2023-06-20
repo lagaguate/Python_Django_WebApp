@@ -38,7 +38,7 @@ class CategoriaCrear(SuccessMessageMixin, CreateView):
 
     # Redireccionamos a la página principal luego de crear un registro o postre
     def get_success_url(self):
-        return reverse('leer')  # Redireccionamos a la vista principal 'leer'
+        return reverse('leerblog')  # Redireccionamos a la vista principal 'leer'
 
 class CategoriaDetalle(DetailView):
     # Llamamos a la clase 'Categoria' que se encuentra en nuestro archivo 'models.py'
@@ -50,11 +50,11 @@ class CategoriaActualizar(SuccessMessageMixin, UpdateView):
     form = Categoria  # Definimos nuestro formulario con el nombre de la clase o modelo 'Servicio'
     fields = "__all__"  # Le decimos a Django que muestre todos los campos de la tabla 'Servicio' de nuestra Base de Datos
     # Mostramos este Mensaje luego de Editar un Postre
-    success_message = 'Servicio Actualizado Correctamente !'
+    success_message = 'Categoria Actualizado Correctamente !'
 
     # Redireccionamos a la página principal luego de actualizar un registro o postre
     def get_success_url(self):
-        return reverse('leer')  # Redireccionamos a la vista principal 'leer'
+        return reverse('leerblog')  # Redireccionamos a la vista principal 'leer'
 
 class CategoriaEliminar(SuccessMessageMixin, DeleteView):
     model = Categoria
@@ -66,7 +66,7 @@ class CategoriaEliminar(SuccessMessageMixin, DeleteView):
         # Mostramos este Mensaje luego de Editar un Categoria
         success_message = 'Categoria Eliminado Correctamente !'
         messages.success(self.request, (success_message))
-        return reverse('leer')  # Redireccionamos a la vista principal 'leer'
+        return reverse('leerblog')  # Redireccionamos a la vista principal 'leer'
 
 #########################################
 # End Categoria

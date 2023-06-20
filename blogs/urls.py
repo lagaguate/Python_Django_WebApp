@@ -13,7 +13,7 @@ from blogs.views import CategoriaListado, CategoriaDetalle, CategoriaCrear, Cate
 urlpatterns = [
     
     # La ruta 'leer' en donde listamos todos los registros de la Base de Datos
-    path('', CategoriaListado.as_view(template_name="blogs/index.html"), name='leer'),
+    path('', CategoriaListado.as_view(template_name="blogs/index.html"), name='leerblog'),
 
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un registro
     path('detalles/<int:pk>',

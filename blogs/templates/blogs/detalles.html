@@ -1,53 +1,49 @@
 {% extends "master.html" %}
 {% load widget_tweaks %}
-{% load static %}
-{% block title %}Servicios detalle{% endblock %}
+{% block title %}Categoria detalle{% endblock %}
 {% block content %}
     {% csrf_token %}
-    <link rel="stylesheet"
-          type="text/css"
-          href="{% static 'ProyectoWebApp/css/style.css' %}"/>
-    <div class="d-flex align-items-center justify-content-center">
-        <div class="shadow p-4">
-            <h4>Detalle</h4>
-            <div class="container ">
-                <div class="row rejilla justify-content-start">
-                    <div class="col-3 cell-color">Titulo:</div>
-                    <div class="col-3 align-self-center">{{ servicio.titulo }}</div>
-                </div>
-                <div class="row  justify-content-start">
-                    <div class="col-3 cell-color align-self-end">Contenido</div>
-                    <div class="col-4  align-self-center">{{ servicio.contenido }}</div>
-                </div>
-                <div class="row justify-content-start">
-                    <div class="col-3 cell-color">Imagen:</div>
-                    <div class="col-5 ">
-                        <img src="{{ servicio.imagen.url }}"
-                             alt="{{ servicio.titulo }}"
-                             class="img-fluid grande"
-                             width="100%"
-                             height="auto"/>
-                    </div>
-                </div>
-                <div class="row  justify-content-start">
-                    <div class="col-3 cell-color">Creado:</div>
-                    <div class="col-5 align-self-center">{{ servicio.created }}</div>
-                </div>
-                <div class="row  justify-content-start">
-                    <div class="col-3 cell-color">Actualizado:</div>
-                    <div class="col-5  align-self-center">{{ servicio.updated }}</div>
-                </div>
-                <div class="row  justify-content-end">
-                    <div class="col-3"></div>
-                    <!-- Botón para volver a la vista principal (Home) -->
-                    <br/><br/><br/>
-                    <div class="col-5">
-                        <a href="../" type="submit" class="btn btn-primary">Volver</a>
+    <section class="h-100 h-custom background-color-custom1">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="card border-top border-bottom border-3 border-color-custom1">
+                        <div class="card-body p-5">
+                            <p class="lead fw-bold mb-5 color-custom1">Categorias</p>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Nombre</p>
+                                    <p>{{ categoria.nombre }}</p>
+                                </div>
+                            </div>
+                            <div class="mx-n5 px-5 py-4 background-color-custom1">
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-5">
+                                        <p>Fecha creado</p>
+                                    </div>
+                                    <div class="col-md-4 col-lg-5">
+                                        <p>{{ categoria.created|date:'Y-m-d H:i:s'  }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-5">
+                                        <p class="mb-0">Fecha modificado</p>
+                                    </div>
+                                    <div class="col-md-4 col-lg-5">
+                                        <p class="mb-0">{{ categoria.updated|date:'Y-m-d H:i:s'  }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="col-5">
+                                <a href="../" type="submit" class="btn btn-primary">Volver</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
+    </section>
 {% endblock %}

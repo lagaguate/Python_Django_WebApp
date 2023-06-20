@@ -13,7 +13,7 @@ from servicios.views import ServicioListado, ServicioDetalle, ServicioCrear, Ser
 urlpatterns = [
     
     # La ruta 'leer' en donde listamos todos los registros de la Base de Datos
-    path('', ServicioListado.as_view(template_name="servicios/index.html"), name='leer'),
+    path('', ServicioListado.as_view(template_name="servicios/index.html"), name='leerservicio'),
 
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un registro
     path('detalles/<int:pk>',
