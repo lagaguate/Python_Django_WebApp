@@ -22,9 +22,11 @@ from django.urls import include, path
 # En este formato podemos agregar la ruta del proyecto.
 # path('ProyectoWebApp/', include('ProyectoWebApp.urls'))
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
     path('', include('ProyectoWebApp.urls')),
+    path('admin/', admin.site.urls),
     path('servicios/', include('servicios.urls')),
     path('blogs/', include('blogs.urls')),
+    path('automatic-crud/',include('automatic_crud.urls'))
     
 ]

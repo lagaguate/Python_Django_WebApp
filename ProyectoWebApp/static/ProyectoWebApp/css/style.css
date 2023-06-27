@@ -39,6 +39,9 @@
   background-color: #eee;
 }
 
+.background-color-custom2 {
+  background-color: #39393b !important;
+}
 .border-color-custom1 {
   border-color: #f37a27 !important;
 }
@@ -46,3 +49,4 @@
 .color-custom1 {
   color: #f37a27 !important;
 }
+

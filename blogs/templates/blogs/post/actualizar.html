@@ -2,22 +2,23 @@
 {% block title %}Servicios{% endblock %}
 {% block content %}
   {% load widget_tweaks %}
-  
   <section class="h-100 h-custom background-color-custom1">
     <br/>
     <div class="d-flex align-items-center justify-content-center">
       <div class="card border-top border-bottom border-3 border-color-custom1">
         <div class="shadow p-4">
+          <h5 class="card-title color-custom1">Actualización de categorias</h5>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <p class="lead fw-bold mb-5 color-custom1">Categorias</p>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Nombre:</span>
               {% render_field form.nombre class="form-control" placeholder="Nombre" type="text" %}
             </div>
+          </form>
+          <div class="card-footer text-center">
             <button type="submit" class="btn btn-primary">Aceptar</button>
             <a href="../" type="submit" class="btn btn-primary">Volver</a>
-          </form>
+          </div>
         </div>
       </div>
     </div>

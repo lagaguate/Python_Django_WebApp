@@ -1,0 +1,54 @@
+{% extends "master.html" %}
+{% load widget_tweaks %}
+{% block title %}Categoria detalle{% endblock %}
+{% block content %}
+    {% csrf_token %}
+    <section class="h-100 h-custom background-color-custom1">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="card border-top border-bottom border-3 border-color-custom1">
+                        <div class="card-body p-5">
+                            <p class="lead fw-bold mb-5 color-custom1">Detalle categorias</p>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Nombre</p>
+                                    <p>{{ categoria.nombre }}</p>
+                                </div>
+                            </div>
+                            <div class="mx-n5 px-5 py-4 background-color-custom1">
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-5">
+                                        <p>Fecha creado</p>
+                                    </div>
+                                    <div class="col-md-4 col-lg-5">
+                                        <p>{{ categoria.created|date:'Y-m-d H:i:s'  }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-5">
+                                        <p class="mb-0">Fecha modificado</p>
+                                    </div>
+                                    <div class="col-md-4 col-lg-5">
+                                        <p class="mb-0">{{ categoria.updated|date:'Y-m-d H:i:s'  }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="col-5">
+                                {% url 'categorialeer' as url %}
+                                <a href="{{ url }}" type="submit" class="btn btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                                      </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

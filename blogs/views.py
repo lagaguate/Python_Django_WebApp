@@ -19,7 +19,14 @@ from django import forms
 
 from blogs.models import Categoria, Post
 
-# Create your views here.
+from generic_scaffold import CrudManager
+
+
+
+class BlogListado(ListView):
+    # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py'
+    model = Categoria
+
 #########################################
 # Create your views here Categoria
 ########################################
@@ -38,7 +45,7 @@ class CategoriaCrear(SuccessMessageMixin, CreateView):
 
     # Redireccionamos a la página principal luego de crear un registro o postre
     def get_success_url(self):
-        return reverse('leerblog')  # Redireccionamos a la vista principal 'leer'
+        return reverse('categorialeer')  # Redireccionamos a la vista principal 'leer'
 
 class CategoriaDetalle(DetailView):
     # Llamamos a la clase 'Categoria' que se encuentra en nuestro archivo 'models.py'
@@ -54,7 +61,7 @@ class CategoriaActualizar(SuccessMessageMixin, UpdateView):
 
     # Redireccionamos a la página principal luego de actualizar un registro o postre
     def get_success_url(self):
-        return reverse('leerblog')  # Redireccionamos a la vista principal 'leer'
+        return reverse('categorialeer')  # Redireccionamos a la vista principal 'leer'
 
 class CategoriaEliminar(SuccessMessageMixin, DeleteView):
     model = Categoria
@@ -66,8 +73,64 @@ class CategoriaEliminar(SuccessMessageMixin, DeleteView):
         # Mostramos este Mensaje luego de Editar un Categoria
         success_message = 'Categoria Eliminado Correctamente !'
         messages.success(self.request, (success_message))
-        return reverse('leerblog')  # Redireccionamos a la vista principal 'leer'
+        return reverse('categorialeer')  # Redireccionamos a la vista principal 'leer'
 
+#########################################
+# End Categoria
+########################################
+
+#########################################
+# Create your views here Post
+########################################
+
+class PostListado(ListView):
+    # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py'
+    model = Post
+
+class PostCrear(SuccessMessageMixin, CreateView):
+    # Llamamos a la clase 'Categoria' que se encuentra en nuestro archivo 'models.py'
+    model = Post
+    form = Post  # Definimos nuestro formulario con el nombre de la clase o modelo 'Servicio'
+    fields = "__all__"  # Le decimos a Django que muestre todos los campos de la tabla 'Servicio' de nuestra Base de Datos
+    # Mostramos este Mensaje luego de Crear un Postre
+    success_message = 'Post Creado Correctamente !'
+
+    # Redireccionamos a la página principal luego de crear un registro o postre
+    def get_success_url(self):
+        return reverse('postleer')  # Redireccionamos a la vista principal 'leer'
+
+class PostDetalle(DetailView):
+    # Llamamos a la clase 'Post' que se encuentra en nuestro archivo 'models.py'
+    model = Post
+
+class PostActualizar(SuccessMessageMixin, UpdateView):
+    # Llamamos a la clase 'Categoria' que se encuentra en nuestro archivo 'models.py'
+    model = Post
+    form = Post  # Definimos nuestro formulario con el nombre de la clase o modelo 'Servicio'
+    fields = "__all__"  # Le decimos a Django que muestre todos los campos de la tabla 'Servicio' de nuestra Base de Datos
+    # Mostramos este Mensaje luego de Editar un Postre
+    success_message = 'Post Actualizado Correctamente !'
+
+    # Redireccionamos a la página principal luego de actualizar un registro o postre
+    def get_success_url(self):
+        return reverse('postleer')  # Redireccionamos a la vista principal 'leer'
+
+class PostEliminar(SuccessMessageMixin, DeleteView):
+    model = Post
+    form = Post
+    fields = "__all__"
+
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self):
+        # Mostramos este Mensaje luego de Editar un Categoria
+        success_message = 'Post Eliminado Correctamente !'
+        messages.success(self.request, (success_message))
+        return reverse('postleer')  # Redireccionamos a la vista principal 'leer'
+
+
+class PostCrudManager(CrudManager):
+    model = Post
+    prefix = 'post'
 #########################################
 # End Categoria
 ########################################

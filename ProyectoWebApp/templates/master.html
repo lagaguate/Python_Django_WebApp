@@ -15,6 +15,7 @@
     <link rel="stylesheet"
           type="text/css"
           href="{% static 'ProyectoWebApp/css/style.css' %}"/>
+   
   </head>
   <body>
     <!--
@@ -26,36 +27,66 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% url 'Home' as url %}
           <li class="nav-item {% if request.path == url  %}active{% endif %} px-lg-4 ">
-            <a class="nav-link text-expanded" href="{{ url }}">INICIO</a>
+            <button type="button" class="btn btn-outline-primary nav-item">
+              <a class="nav-link text-expanded" href="{{ url }}">INICIO</a>
+            </button>
           </li>
           {% url 'leerservicio' as url %}
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
-            <a class="nav-link text-expanded" href="{{ url }}">SERVICIOS</a>
+            <button type="button" class="btn btn-outline-primary ">
+              <a class="nav-link text-expanded" href="{{ url }}">SERVICIOS</a>
+            </button>
           </li>
           {% url 'Tienda' as url %}
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
-            <a class="nav-link  text-expanded" href="{{ url }}">TIENDA</a>
+            <button type="button" class="btn btn-outline-primary">
+              <a class="nav-link text-expanded" href="{{ url }}">TIENDA</a>
+            </button>
           </li>
           {% url 'Contacto' as url %}
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
-            <a class="nav-link text-expanded" href="{{ url }}">CONTACTO</a>
+            <button type="button" class="btn btn-outline-primary">
+              <a class="nav-link text-expanded" href="{{ url }}">CONTACTO</a>
+            </button>
           </li>
-          {% url 'leerblog' as url %}
-          <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
-            <a class="nav-link text-expanded" href="{{ url }}">BLOG</a>
-          </li>
+          {% url 'blog' as url %}
+          <div class="btn-group dropend">
+            <button type="button"
+                    class="btn btn-outline-primary nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
+              <a class="nav-link text-expanded" href="{{ url }}">BLOG</a>
+            </button>
+            <button type="button"
+                    class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropright</span>
+            </button>
+            
+            <ul class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="navbarDarkDropdownMenuLink">
+                {% url 'categorialeer' as url %}
+              <li>
+                <a class="dropdown-item" href="{{ url }}">Catalogo</a>
+              </li>
+              {% url 'categorialeer' as url %}
+              <li>
+                <a class="dropdown-item" href="{{ url }}">Post</a>
+              </li>
+
+            </ul>
+          </div>
         </ul>
       </div>
     </nav>
     {% block content %}{% endblock %}
   </body>
   <!-- Remove the container if you want to extend the Footer to full width. -->
-  <div class="container my-5">
+  <div class="container">
     <section>
       <!-- Footer -->
-      <footer class="text-center text-white" style="background-color: #0a4275;">
+      <footer class="background-color-custom2 text-center text-white">
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2023 Copyright</div>
+        <div class="background-color-custom2 text-center p-3">© 2023 Copyright</div>
         <!-- Copyright -->
       </footer>
       <!-- Footer -->
