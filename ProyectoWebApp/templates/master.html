@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {% load bootstrap5 %}
+    {% load bootstrap_icons %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     {% load widget_tweaks %}
@@ -9,7 +10,7 @@
     <meta charset="utf-8"/>
     <meta name="keywords" content="foo,bar"/>
     <meta name="description" content="foo"/>
-    <title>
+    <title>add
       {% block title %}{% endblock %}
     </title>
     <link rel="stylesheet"
@@ -85,9 +86,7 @@
     <section>
       <!-- Footer -->
       <footer class="background-color-custom2 text-center text-white">
-        <!-- Copyright -->
-        <div class="background-color-custom2 text-center p-3">© 2023 Copyright</div>
-        <!-- Copyright -->
+        {% include "footer.html" %}
       </footer>
       <!-- Footer -->
     </section>

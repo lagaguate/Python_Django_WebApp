@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 # Instanciamos las vistas genéricas de Django
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -26,7 +27,7 @@ from generic_scaffold import CrudManager
 
 class BlogListado(ListView):
     # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py'
-    model = Categoria
+    model = Post
 
 #########################################
 # Create your views here Categoria
@@ -85,8 +86,11 @@ class CategoriaEliminar(SuccessMessageMixin, DeleteView):
 ########################################
 
 class PostListado(ListView):
-    # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py'
+    paginate_by=5
     model = Post
+    #model = Post.objects.all()
+    #paginator = Paginator(model,5)
+    #page_number = request.GET.get('page')
 
 class AddPost(SuccessMessageMixin, CreateView):
     model = Post

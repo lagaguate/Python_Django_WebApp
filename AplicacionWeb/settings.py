@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'generic_scaffold',
     'bootstrap5',
+    'django_bootstrap_icons',
     'widget_tweaks',
     'ProyectoWebApp',
     'servicios',

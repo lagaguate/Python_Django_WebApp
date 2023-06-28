@@ -1,13 +1,39 @@
 {% extends "master.html" %}
 {% block title %}Blog{% endblock %}
 {% block content %}
-  <div class="d-flex align-items-center justify-content-center vh-100">
+  <div class="d-flex align-items-center justify-content-center">
     <div class="shadow p-4">
       <h1>¡Bienvenido a mi página de BLOGS!</h1>
       <section>
         <h2>Contenido Principal</h2>
         <p>¡Aquí puedes agregar el contenido principal de tu página de inicio!</p>
       </section>
+      <div class="container">
+        <div class="row">
+          <!-- Blog Entries Column -->
+          <div class="col-md-8 mt-3 left">
+            {% for post in object_list %}
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h2 class="card-title">{{ post.titulo }}</h2>
+                  <p class="card-text text-muted h6">{{ post.autor }} | {{ post.created }}</p>
+                  <p class="card-text">{{ post.contenido|slice:":200" }}</p>
+                  <p>
+                    <img class="d-block w-100"
+                         src="{{ post.imagen.url }}"
+                         alt="{{ post.titulo }}"
+                         class="img-fluid"
+                         width="70%"
+                         height="70%"/>
+                  </p>
+                  
+                  <p>Categorias: {{ post.categorias.all|join:", " }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock %}
