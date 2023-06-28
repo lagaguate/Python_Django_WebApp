@@ -1,6 +1,6 @@
 {% extends "master.html" %}
 {% load widget_tweaks %}
-{% block title %}Categoria detalle{% endblock %}
+{% block title %}Post detalle{% endblock %}
 {% block content %}
     {% csrf_token %}
     <section class="h-100 h-custom background-color-custom1">
@@ -9,11 +9,39 @@
                 <div class="col-lg-8 col-xl-6">
                     <div class="card border-top border-bottom border-3 border-color-custom1">
                         <div class="card-body p-5">
-                            <p class="lead fw-bold mb-5 color-custom1">Categorias</p>
+                            <p class="lead fw-bold mb-5 color-custom1">Detalle Post</p>
                             <div class="row">
                                 <div class="col mb-3">
-                                    <p class="small text-muted mb-1">Nombre</p>
-                                    <p>{{ categoria.nombre }}</p>
+                                    <p class="small text-muted mb-1">Titulo</p>
+                                    <p>{{ post.titulo }}</p>
+                                </div>
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Contenido</p>
+                                    <p>{{ post.contenido }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Categorias</p>
+                                    <p>{{ post.categorias.all|join:", " }}</p>
+                                </div>
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Autor</p>
+                                    <p>{{ post.autor }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Imagen</p>
+                                    <p>
+                                        {% if post.imagen %}
+                                            <img src="{{ post.imagen.url }}"
+                                                 alt="{{ post.titulo }}"
+                                                 class="img-fluid"
+                                                 width="30%"
+                                                 height="30%"/>
+                                        {% endif %}
+                                    </p>
                                 </div>
                             </div>
                             <div class="mx-n5 px-5 py-4 background-color-custom1">
@@ -22,7 +50,7 @@
                                         <p>Fecha creado</p>
                                     </div>
                                     <div class="col-md-4 col-lg-5">
-                                        <p>{{ categoria.created|date:'Y-m-d H:i:s'  }}</p>
+                                        <p>{{ post.created|date:'Y-m-d H:i:s'  }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -30,7 +58,7 @@
                                         <p class="mb-0">Fecha modificado</p>
                                     </div>
                                     <div class="col-md-4 col-lg-5">
-                                        <p class="mb-0">{{ categoria.updated|date:'Y-m-d H:i:s'  }}</p>
+                                        <p class="mb-0">{{ post.updated|date:'Y-m-d H:i:s'  }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +66,7 @@
                             <br/>
                             <br/>
                             <div class="col-5">
-                                <a href="../" type="submit" class="btn btn-primary">Volver</a>
+                                <a href="{% url 'postleer' %}" type="submit" class="btn btn-primary">Volver</a>
                             </div>
                         </div>
                     </div>
