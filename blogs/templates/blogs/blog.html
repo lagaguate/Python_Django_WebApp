@@ -1,18 +1,36 @@
 {% extends "master.html" %}
+{% load widget_tweaks %}
 {% block title %}Blog{% endblock %}
 {% block content %}
   <div class="d-flex align-items-center justify-content-center">
     <div class="shadow p-4">
       <h1>¡Bienvenido a mi página de BLOGS!</h1>
       <section>
+        <form method="get">
+          <div class="container">
+            <div class="row align-items-start">
+              <div class="col">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Categoria:</span>
+                  {% render_field filter.form.categorias class="form-control" placeholder="Categoria" %}
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-center">
+                  <button type="submit" class="btn btn-success">Filtrar</button>
+                  <a type="button" class="btn btn-warning" href="{% url 'sblog'  %}">Clear All</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
         <h2>Contenido Principal</h2>
-        <p>¡Aquí puedes agregar el contenido principal de tu página de inicio!</p>
       </section>
       <div class="container">
         <div class="row">
           <!-- Blog Entries Column -->
           <div class="col-md-8 mt-3 left">
-            {% for post in object_list %}
+            {% for post in filter.qs %}
               <div class="card mb-4">
                 <div class="card-body">
                   <h2 class="card-title">{{ post.titulo }}</h2>
@@ -26,8 +44,7 @@
                          width="70%"
                          height="70%"/>
                   </p>
-                  
-                  <p>Categorias: {{ post.categorias.all|join:", " }}</p>
+                  <p >Categorias: {{ post.categorias.all|join:", " }}</p>
                 </div>
               </div>
             {% endfor %}

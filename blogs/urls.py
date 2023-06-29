@@ -1,16 +1,12 @@
 
 
 from django.urls import path
-from servicios import views
+from blogs import views
 from django.conf import settings
 from django.conf.urls.static import static
 from blogs.views import CategoriaListado, CategoriaDetalle, CategoriaCrear, CategoriaActualizar, CategoriaEliminar
 from blogs.views import PostListado, PostDetalle, AddPost, PostActualizar, PostEliminar 
-from blogs.views import BlogListado
-#from blogs.views import PostCrudManager
-
-
-#post_crud = PostCrudManager()
+from blogs.views import BlogListado,Blogsearch
 
 #
 # URLS de Categoria de Blogs
@@ -18,7 +14,8 @@ from blogs.views import BlogListado
 
 urlpatterns = [
     
-    path('blog', BlogListado.as_view (template_name="blogs/blog.html"), name="blog"),
+    #path('', BlogListado.as_view (template_name="blogs/blog.html"), name="xxxblog"),
+    path('', views.Blogsearch, name="sblog"), 
     
     ###
     # Categoria

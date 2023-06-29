@@ -21,7 +21,7 @@ from blogs.forms import CreatePostForm
 
 from blogs.models import Categoria, Post
 
-from generic_scaffold import CrudManager
+from .filters import PostFilter
 
 
 
@@ -29,6 +29,10 @@ class BlogListado(ListView):
     # Llamamos a la clase 'Servicio' que se encuentra en nuestro archivo 'models.py'
     model = Post
 
+def Blogsearch(request):
+    post_list = Post.objects.all()
+    post_filter = PostFilter(request.GET, queryset=post_list)
+    return render(request, 'blogs/blog.html', {'filter': post_filter})
 #########################################
 # Create your views here Categoria
 ########################################
@@ -129,9 +133,6 @@ class PostEliminar(SuccessMessageMixin, DeleteView):
         return reverse('postleer')  # Redireccionamos a la vista principal 'leer'
 
 
-class PostCrudManager(CrudManager):
-    model = Post
-    prefix = 'post'
 #########################################
 # End Categoria
 ########################################
