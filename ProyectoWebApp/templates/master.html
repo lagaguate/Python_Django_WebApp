@@ -16,7 +16,6 @@
     <link rel="stylesheet"
           type="text/css"
           href="{% static 'ProyectoWebApp/css/style.css' %}"/>
-   
   </head>
   <body>
     <!--
@@ -44,38 +43,60 @@
               <a class="nav-link text-expanded" href="{{ url }}">TIENDA</a>
             </button>
           </li>
-          {% url 'Contacto' as url %}
+          {% url 'crearContacto' as url %}
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
-            <button type="button" class="btn btn-outline-primary">
-              <a class="nav-link text-expanded" href="{{ url }}">CONTACTO</a>
-            </button>
+            <div class="btn-group dropend">
+              <button type="button" class="btn btn-outline-primary">
+                <a class="nav-link text-expanded" href="{{ url }}">CONTACTO</a>
+              </button>
+              <button type="button"
+                      class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropright</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDarkDropdownMenuLink">
+                {% url 'leerContacto' as url %}
+                <li>
+                  <a class="dropdown-item" href="{{ url }}">List</a>
+                </li>
+                {% url 'postleer' as url %}
+                <li>
+                  <a class="dropdown-item" href="{{ url }}">Detalle</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{{ url }}">Editar</a>
+                </li>
+              </ul>
+            </div>
           </li>
           {% url 'sblog' as url %}
-          <div class="btn-group dropend">
-            <button type="button"
-                    class="btn btn-outline-primary nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
-              <a class="nav-link text-expanded" href="{{ url }}">BLOG</a>
-            </button>
-            <button type="button"
-                    class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropright</span>
-            </button>
-            
-            <ul class="dropdown-menu dropdown-menu-dark"
-                aria-labelledby="navbarDarkDropdownMenuLink">
+          <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
+            <div class="btn-group dropend">
+              <button type="button"
+                      class="btn btn-outline-primary nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
+                <a class="nav-link text-expanded" href="{{ url }}">BLOG</a>
+              </button>
+              <button type="button"
+                      class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropright</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDarkDropdownMenuLink">
                 {% url 'categorialeer' as url %}
-              <li>
-                <a class="dropdown-item" href="{{ url }}">Catalogo</a>
-              </li>
-              {% url 'postleer' as url %}
-              <li>
-                <a class="dropdown-item" href="{{ url }}">Post</a>
-              </li>
-
-            </ul>
-          </div>
+                <li>
+                  <a class="dropdown-item" href="{{ url }}">Catalogo</a>
+                </li>
+                {% url 'postleer' as url %}
+                <li>
+                  <a class="dropdown-item" href="{{ url }}">Post</a>
+                </li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>

@@ -96,6 +96,9 @@ class PostListado(ListView):
     #paginator = Paginator(model,5)
     #page_number = request.GET.get('page')
 
+#
+# Usando form personalizado.  El CreatePostForm, buscarlo en form.py
+#
 class AddPost(SuccessMessageMixin, CreateView):
     model = Post
     form_class = CreatePostForm

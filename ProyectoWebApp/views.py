@@ -1,10 +1,4 @@
 from django.shortcuts import render, HttpResponse
-# Instanciamos las vistas genéricas de Django
-from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
-# Nos sirve para redireccionar despues de una acción revertiendo patrones de expresiones regulares
-from django.urls import reverse
 
 # Habilitamos el uso de mensajes en Django
 from django.contrib import messages
@@ -25,5 +19,3 @@ def home(request):
 def tienda(request):
     return render(request, "ProyectoWebApp/tienda.html")
 
-def contacto(request):
-    return render(request, "ProyectoWebApp/contacto.html")
