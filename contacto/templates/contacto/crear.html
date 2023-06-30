@@ -8,7 +8,7 @@
       <div class="card shadow p-4 border-top border-bottom border-3 border-color-custom1">
         <div class="card-body">
           <h5 class="card-title color-custom1">Registro de contacto</h5>
-          <form method="post" enctype="multipart/form-data">
+          <form method="post" action="{% url 'crearContacto' as url %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
               <label for="firstname" class="txt_negrita">Nombre</label>

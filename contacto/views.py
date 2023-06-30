@@ -17,9 +17,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from contacto.models import Contacto
 from contacto.forms import CreateContactoForm
+from contacto.email import CorreoElectronico
 #
 # URLS de PROYECTOWEBAPP
 #
+
 
 def contacto(request):
     return render(request, "ProyectoWebApp/contacto.html")
@@ -28,24 +30,37 @@ def contacto(request):
 # Create your views here Contacto
 ########################################
 
+
 class ContactoListado(ListView):
-    paginate_by=5
+    paginate_by = 5
     model = Contacto
 
 #
 # Usando form personalizado.  El CreatePostForm, buscarlo en form.py
 #
+
+
 class AddPContacto(SuccessMessageMixin, CreateView):
     model = Contacto
     form_class = CreateContactoForm
     template_name = "contacto/crear.html"
     success_message = 'Contacto creado correctamente !'
-    success_url = reverse_lazy("Home")
+
+    def get_success_url(self):
+        # Si el post fue OK, entonces recupere los campos
+        if self.request.method == 'POST':
+            email = self.request.POST.get('email')
+        body = "Correo registrado: "+email
+        mycorreo = CorreoElectronico
+        mycorreo.enviarcorreo("lagaguate@yahoo.com", "Test de envio", body)
+        
+        return reverse_lazy("Home")
+    #
 
 
 class ContactoDetalle(DetailView):
     # Llamamos a la clase 'Contacto' que se encuentra en nuestro archivo 'models.py'
-    
+
     model = Contacto
 
 
@@ -59,7 +74,8 @@ class ContactoActualizar(SuccessMessageMixin, UpdateView):
 
     # Redireccionamos a la página principal luego de actualizar un registro o postre
     def get_success_url(self):
-        return reverse('leerContacto')  # Redireccionamos a la vista principal 'leer'
+        # Redireccionamos a la vista principal 'leer'
+        return reverse('leerContacto')
 
 
 class ContactoEliminar(SuccessMessageMixin, DeleteView):
@@ -72,4 +88,5 @@ class ContactoEliminar(SuccessMessageMixin, DeleteView):
         # Mostramos este Mensaje luego de Editar un Postre
         success_message = 'Contacto Eliminado Correctamente !'
         messages.success(self.request, (success_message))
-        return reverse('leerContacto')  # Redireccionamos a la vista principal 'leer'
+        # Redireccionamos a la vista principal 'leer'
+        return reverse('leerContacto')

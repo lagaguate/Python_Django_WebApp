@@ -26,7 +26,7 @@ urlpatterns = [
         template_name="contacto/actualizar.html"), name='editarContacto'),
 
     # La ruta 'eliminar' que usaremos para eliminar un registro de la Base de Datos
-    path('contacto/eliminar/<int:pk>',
+    path('eliminar/<int:pk>',
          ContactoEliminar.as_view(), name='eliminarContacto'),
 ]
 

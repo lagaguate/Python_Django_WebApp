@@ -6,7 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from blogs.views import CategoriaListado, CategoriaDetalle, CategoriaCrear, CategoriaActualizar, CategoriaEliminar
 from blogs.views import PostListado, PostDetalle, AddPost, PostActualizar, PostEliminar 
-from blogs.views import BlogListado,Blogsearch
+from blogs.views import Blogsearch
 
 #
 # URLS de Categoria de Blogs

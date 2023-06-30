@@ -5,7 +5,7 @@
 {% block content %}
     <script type="text/javascript">
     function eliminar() {
-      var x = confirm("Eliminar ?");
+      var x = confirm("Eliminar contacto?");
       if (x)
         return true;
       else
@@ -57,7 +57,7 @@
                                     <td>{{ contacto.contenido }}</td>
                                     <td>
                                         <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->
-                                        <form method="post" action="eliminar/{{ contacto.id }}">
+                                        <form method="post" action="{% url 'eliminarContacto' contacto.id %}">
                                             {% csrf_token %}
                                             <div class="btn-group">
                                                 <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->

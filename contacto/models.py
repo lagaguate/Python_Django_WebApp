@@ -18,4 +18,4 @@ class Contacto(models.Model):
         #db_table_comment = 'Definicion de servicios'
 
     def __str__(self):
-        return self.firstname
+        return self.email
