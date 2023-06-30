@@ -5,7 +5,7 @@ class Contacto(models.Model):
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50) 
     email = models.CharField(max_length=50) 
-    imagen = models.ImageField(upload_to="img",help_text="Test Help")
+    imagen = models.ImageField(upload_to="contacto",help_text="Test Help")
     contenido = models.CharField(max_length=2000,null=True) 
     created = models.DateTimeField(auto_now_add=True )
     updated = models.DateTimeField(auto_now=True)
