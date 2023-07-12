@@ -52,6 +52,10 @@ class AddPContacto(SuccessMessageMixin, CreateView):
             email = self.request.POST.get('email')
         body = "Correo registrado: "+email
         mycorreo = CorreoElectronico
+        #
+        # El primer parametro de enviarcorreo, deberia ir la variable "email", 
+        # para pruebas se dejo lagaguate@yahoo.com
+        #
         mycorreo.enviarcorreo("lagaguate@yahoo.com", "Test de envio", body)
         
         return reverse_lazy("Home")

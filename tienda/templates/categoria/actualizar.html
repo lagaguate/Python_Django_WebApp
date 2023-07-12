@@ -1,0 +1,26 @@
+{% extends "master.html" %}
+{% block title %}Post{% endblock %}
+{% block content %}
+  {% load widget_tweaks %}
+  <section class="background-color-custom1">
+    <br />
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="card border-top border-bottom border-3 border-color-custom1">
+        <div class="shadow p-4">
+          <h5 class="card-title color-custom1">Actualización de categorias producto</h5>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Nombre(s):</span>
+              {% render_field form.nombre class="form-control" placeholder="Nombres" type="text" %}
+            </div>
+            <div class="card-footer text-center">
+              <button type="submit" class="btn btn-primary">Aceptar</button>
+              <a href="{% url 'categoriaproductoleer' %}" type="submit" class="btn btn-primary">Volver</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

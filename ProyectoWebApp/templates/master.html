@@ -7,15 +7,15 @@
     {% bootstrap_javascript %}
     {% load widget_tweaks %}
     {% load static %}
-    <meta charset="utf-8"/>
-    <meta name="keywords" content="foo,bar"/>
-    <meta name="description" content="foo"/>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="foo,bar" />
+    <meta name="description" content="foo" />
     <title>add
       {% block title %}{% endblock %}
     </title>
     <link rel="stylesheet"
           type="text/css"
-          href="{% static 'ProyectoWebApp/css/style.css' %}"/>
+          href="{% static 'ProyectoWebApp/css/style.css' %}" />
   </head>
   <body>
     <!--
@@ -26,7 +26,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% url 'Home' as url %}
-          <li class="nav-item {% if request.path == url  %}active{% endif %} px-lg-4 ">
+          <li class="nav-item {% if request.path == url %}active{% endif %} px-lg-4 ">
             <button type="button" class="btn btn-outline-primary nav-item">
               <a class="nav-link text-expanded" href="{{ url }}">INICIO</a>
             </button>
@@ -37,11 +37,29 @@
               <a class="nav-link text-expanded" href="{{ url }}">SERVICIOS</a>
             </button>
           </li>
-          {% url 'Tienda' as url %}
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
-            <button type="button" class="btn btn-outline-primary">
-              <a class="nav-link text-expanded" href="{{ url }}">TIENDA</a>
-            </button>
+            <div class="btn-group dropend">
+              {% url 'tiendaleer' as url %}
+              <button type="button" class="btn btn-outline-primary">
+                <a class="nav-link text-expanded" href="{{ url }}">TIENDA</a>
+              </button>
+              <button type="button"
+                      class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropright</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDarkDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="{% url 'categoriaproductoleer' %}">Categoria producto</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item" href="{% url 'categoriaproductoleer' %}">Producto</a>
+                </li>
+              </ul>
+            </div>
           </li>
           {% url 'crearContacto' as url %}
           <li class="nav-item px-lg-4 {% if request.path == url %}active{% endif %}">
@@ -60,13 +78,6 @@
                 {% url 'leerContacto' as url %}
                 <li>
                   <a class="dropdown-item" href="{{ url }}">List</a>
-                </li>
-                {% url 'postleer' as url %}
-                <li>
-                  <a class="dropdown-item" href="{{ url }}">Detalle</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{{ url }}">Editar</a>
                 </li>
               </ul>
             </div>

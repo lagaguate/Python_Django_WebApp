@@ -15,8 +15,6 @@ from django.conf.urls.static import static
 # path('serviciosxx', views.servicios, name="Servicios"),
 urlpatterns = [
     path('', views.home, name="Home"),
-    path('tienda', views.tienda, name="Tienda"),
-    
         
 ]
 

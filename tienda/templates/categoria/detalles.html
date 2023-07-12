@@ -1,0 +1,49 @@
+{% extends "master.html" %}
+{% load widget_tweaks %}
+{% block title %}Detalle Contacto{% endblock %}
+{% block content %}
+    {% csrf_token %}
+    <section class="h-100 h-custom background-color-custom1">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="card border-top border-bottom border-3 border-color-custom1">
+                        <div class="card-body p-5">
+                            <p class="lead fw-bold mb-5 color-custom1">Detalle categoria producto</p>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Nombre(s)</p>
+                                    <p>{{ categoriaproducto.nombre }}</p>
+                                </div>
+                            </div>
+                            <div class="mx-n5 px-5 py-4 background-color-custom1">
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-5">
+                                        <p>Fecha creado</p>
+                                    </div>
+                                    <div class="col-md-4 col-lg-5">
+                                        <p>{{ categoriaproducto.created|date:'Y-m-d H:i:s' }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-5">
+                                        <p class="mb-0">Fecha modificado</p>
+                                    </div>
+                                    <div class="col-md-4 col-lg-5">
+                                        <p class="mb-0">{{ categoriaproducto.updated|date:'Y-m-d H:i:s' }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <div class="col-5">
+                                <a href="{% url 'categoriaproductoleer' %}" type="submit" class="btn btn-primary">Volver</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

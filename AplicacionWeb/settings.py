@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'ProyectoWebApp',
     'servicios',
     'blogs',
-    'contacto'
+    'contacto',
+    'tienda'
     
 ]
 
