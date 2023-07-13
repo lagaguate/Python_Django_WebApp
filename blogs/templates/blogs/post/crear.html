@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
               <label for="categorias" class="txt_negrita">Categorias</label>
-              {{ form.categorias }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+              {{ form.categorias |add_class:"scrollbar-checklist" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
             </div>
             <div class="card-footer text-center">
               <button type="submit" class="btn btn-primary">

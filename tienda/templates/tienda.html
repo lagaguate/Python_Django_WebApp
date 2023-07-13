@@ -59,11 +59,11 @@
                                     <td>{{ producto.disponible }}</td>
                                     <td>
                                         <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->
-                                        <form method="post" action="{% url 'eliminarContacto' contacto.id %}">
+                                        <form method="post" action="{% url 'eliminarContacto' producto.id %}">
                                             {% csrf_token %}
                                             <div class="btn-group">
                                                 <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
-                                                <a href="{% url 'detalleContacto' contacto.id %}"
+                                                <a href="{% url 'detalleContacto' producto.id %}"
                                                    title="Ver"
                                                    type="button"
                                                    class="btn btn-success">
@@ -77,7 +77,7 @@
                                                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                                                     </svg>
                                                 </a>
-                                                <a href="{% url 'editarContacto' contacto.id %}"
+                                                <a href="{% url 'editarContacto' producto.id %}"
                                                    title="Editar"
                                                    type="button"
                                                    class="btn btn-primary">

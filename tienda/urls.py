@@ -33,22 +33,24 @@ urlpatterns = [
     # Categoria producto eliminar
     path('categoria/eliminar/<int:pk>',
          CategoryProductDelete.as_view(), name='categoriaproductoeliminar'),
-
+    #################################################################
+    #  CRUD de productos
+    # ############################################################### 
     # Product List
     path('producto', ProductList.as_view(
-        template_name="tienda/product/index.html"), name='productoleer'),
+        template_name="producto/listado.html"), name='productoleer'),
 
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un registro
     path('producto/detalles/<int:pk>',
-         ProductDetail.as_view(template_name="tienda/producto/detalles.html"), name='productodetalle'),
+         ProductDetail.as_view(template_name="producto/detalles.html"), name='productodetalle'),
 
     # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo registro
     path('producto/crear',
-         ProductAdd.as_view(template_name="tienda/producto/crear.html"), name='productocrear'),
+         ProductAdd.as_view(template_name="producto/crear.html"), name='productocrear'),
 
     # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un registro de la Base de Datos
     path('producto/editar/<int:pk>', ProductUpdate.as_view(
-        template_name="tienda/producto/actualizar.html"), name='productoeditar'),
+        template_name="producto/actualizar.html"), name='productoeditar'),
 
     # La ruta 'eliminar' que usaremos para eliminar un registro de la Base de Datos
     path('producto/eliminar/<int:pk>',

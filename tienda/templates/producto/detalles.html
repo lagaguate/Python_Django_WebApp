@@ -1,74 +1,98 @@
 {% extends "master.html" %}
 {% load widget_tweaks %}
-{% block title %}Detalle Contacto{% endblock %}
+{% block title %}Detalle Producto{% endblock %}
 {% block content %}
     {% csrf_token %}
     <section class="h-100 h-custom background-color-custom1">
-        <div class="container py-5 h-100">
+        <div class="container py-3 ">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-lg-8 col-xl-6">
                     <div class="card border-top border-bottom border-3 border-color-custom1">
-                        <div class="card-body p-5">
-                            <p class="lead fw-bold mb-5 color-custom1">Detalle contacto</p>
+                        <div class="card-body p-3">
+                            <p class="lead fw-bold mb-5 color-custom1">Detalle producto</p>
                             <div class="row">
                                 <div class="col mb-3">
-                                    <p class="small text-muted mb-1">Nombre(s)</p>
-                                    <p>{{ contacto.firstname }}</p>
+                                    <p class="small text-muted mb-1">Nombre</p>
+                                    <p class="small">{{ producto.nombre }}</p>
                                 </div>
                                 <div class="col mb-3">
-                                    <p class="small text-muted mb-1">Apellido(s)</p>
-                                    <p>{{ contacto.lastname }}</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col mb-3">
-                                        <p class="small text-muted mb-1">Correo electronico</p>
-                                        <p>{{ contacto.email }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col mb-3">
-                                        <p class="small text-muted mb-1">Contenido</p>
-                                        <p>{{ contacto.contenido }}</p>
-                                    </div>
+                                    <p class="small text-muted mb-1">Categoria</p>
+                                    <p>{{ producto.categorias }}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col mb-3">
-                                    <p class="small text-muted mb-1">Avatar</p>
+                                    <p class="small text-muted mb-1">Descripcion</p>
+                                    <p class="small">{{ producto.descripcion }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Precio</p>
+                                    <p class="small">{{ producto.precio }}</p>
+                                </div>
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Disponibilidad</p>
+                                    {% if producto.disponibilidad %}
+                                        <a disabled type="button" class="btn btn-info change_cursor">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 width="16"
+                                                 height="16"
+                                                 fill="currentColor"
+                                                 class="bi bi-cart-check change_cursor" 
+                                                 viewBox="0 0 16 16">
+                                                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                            </svg>
+                                        </a>
+                                    {% else %}
+                                        <a type="button" class="btn btn-secondary change_cursor">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 width="16"
+                                                 height="16"
+                                                 fill="currentColor"
+                                                 class="bi bi-cart-x"
+                                                 viewBox="0 0 16 16">
+                                                <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z" />
+                                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Producto</p>
                                     <p>
-                                        {% if contacto.imagen %}
-                                            <img src="{{ contacto.imagen.url }}"
-                                                 alt="{{ contacto.titulo }}"
+                                        {% if producto.imagen %}
+                                            <img src="{{ producto.imagen.url }}"
+                                                 alt="{{ producto.titulo }}"
                                                  class="img-fluid"
-                                                 width="30%"
-                                                 height="30%"/>
+                                                 width="20%"
+                                                 height="20%" />
                                         {% endif %}
                                     </p>
                                 </div>
                             </div>
-                            <div class="mx-n5 px-5 py-4 background-color-custom1">
+                            <div class="mx-n5 px-3 py-2 background-color-custom1">
                                 <div class="row">
-                                    <div class="col-md-8 col-lg-5">
-                                        <p>Fecha creado</p>
+                                    <div class="col-md-4 col-lg-3">
+                                        <p class="p_custom text-muted ">Fecha creado</p>
                                     </div>
-                                    <div class="col-md-4 col-lg-5">
-                                        <p>{{ contacto.created|date:'Y-m-d H:i:s'  }}</p>
+                                    <div class="p_custom col-md-4 col-lg-3">
+                                        <p class="p_custom">{{ producto.created|date:'Y-m-d H:i:s' }}</p>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8 col-lg-5">
-                                        <p class="mb-0">Fecha modificado</p>
+                                    <div class=" col-md-4 col-lg-3">
+                                        <p class="p_custom text-muted mb-0">Fecha modificado</p>
                                     </div>
-                                    <div class="col-md-4 col-lg-5">
-                                        <p class="mb-0">{{ contacto.updated|date:'Y-m-d H:i:s'  }}</p>
+                                    <div class="col-md-4 col-lg-3">
+                                        <p class="p_custom">{{ producto.updated|date:'Y-m-d H:i:s' }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <br/>
-                            <br/>
-                            <br/>
+                            <br />
                             <div class="col-5">
-                                <a href="{% url 'leerContacto' %}" type="submit" class="btn btn-primary">Volver</a>
+                                <a href="{% url 'productoleer' %}" type="submit" class="btn btn-primary">Volver</a>
                             </div>
                         </div>
                     </div>

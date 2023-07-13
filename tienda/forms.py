@@ -9,20 +9,26 @@ class CustomMMCF(forms.ModelMultipleChoiceField):
 class CreateProductForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre', 'categorias','descripcion','imagen', 'precio','disponibilidad']
+        fields = ['nombre','categorias','descripcion','imagen', 'precio','disponibilidad']
         widgets = {
             'descripcion': forms.Textarea(attrs={'rows': 3}),
         }
 
-   
     nombre = forms.CharField(required=True)
-    categorias = CustomMMCF(
+    categorias = forms.ModelChoiceField(
         queryset=CategoriaProducto.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
+        to_field_name='nombre',
+        required=True,  
+        widget=forms.Select(attrs={'class': 'form-control'})
     )
-    descripcion = forms.CharField(widget=forms.Textarea(attrs={"rows":3, "cols":20}))
+    descripcion = forms.CharField(widget=forms.Textarea(attrs={"rows":3, "cols":25}))
     precio = forms.FloatField()
-    disponibilidad = forms.BooleanField()
+    disponibilidad = forms.BooleanField(required=False, widget=forms.CheckboxInput(
+                                                        attrs={
+                                                                'checked': True
+                                                            }
+                                                        )
+                                        )
     imagen = forms.ImageField()
     
 
