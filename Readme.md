@@ -131,6 +131,15 @@ python3 manage.py makemigrations tienda
 python3 manage.py migrate tienda
 
 ```
+
+ *Crear la APP Carrp*
+
+```
+python3 manage.py startapp carro
+python3 manage.py makemigrations tienda
+python3 manage.py migrate tienda
+
+```
 ### En cada APPs, configurar modelos en  admin.py
 
 Cuando creas un proyecto, es importante aprovecha las ventajas de Admin, permite realizar CRUD sobre los datos.

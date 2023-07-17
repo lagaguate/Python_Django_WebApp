@@ -142,7 +142,7 @@ class ProductDelete(SuccessMessageMixin, DeleteView):
 ########################################
 
 class TiendaList(ListView):
-    paginate_by=5
+    paginate_by=8
     model = Producto
     
 #########################################

@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'servicios',
     'blogs',
     'contacto',
-    'tienda'
+    'tienda', 
+    'carro'
     
 ]
 
@@ -116,13 +117,19 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
+
+TIME_ZONE = 'America/Guatemala'  # Correction for the Timestamps
+
+DECIMAL_SEPARATOR = '.'
+
+USE_THOUSAND_SEPARATOR = True
+
+THOUSAND_SEPARATOR = ','
 
 
 # Static files (CSS, JavaScript, Images)
