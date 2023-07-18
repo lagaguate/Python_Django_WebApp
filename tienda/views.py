@@ -18,6 +18,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from tienda.models import CategoriaProducto, Producto
 from tienda.forms import CreateProductForm
 from tienda.email import CorreoElectronico
+from carro.views import Carro
 #
 # URLS de PROYECTOWEBAPP
 #

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'generic_scaffold',
     'bootstrap5',
     'django_bootstrap_icons',
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carro.context_processor.importe_total_carro'
             ],
         },
     },
@@ -115,21 +117,22 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-es'
-
-USE_I18N = True
-
-USE_L10N = False
+LANGUAGE_CODE = 'es-GT'
 
 USE_TZ = True
 
 TIME_ZONE = 'America/Guatemala'  # Correction for the Timestamps
 
-DECIMAL_SEPARATOR = '.'
+USE_I18N = True
+
+USE_L10N = False
 
 USE_THOUSAND_SEPARATOR = True
-
 THOUSAND_SEPARATOR = ','
+NUMBER_GROUPING = 3
+DECIMAL_SEPARATOR = '.'
+
+
 
 
 # Static files (CSS, JavaScript, Images)
