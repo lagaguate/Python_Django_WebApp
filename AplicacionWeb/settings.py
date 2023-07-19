@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'blogs',
     'contacto',
     'tienda', 
-    'carro'
+    'carro',
+    'autenticacion',
     
 ]
 

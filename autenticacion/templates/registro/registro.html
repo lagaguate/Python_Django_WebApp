@@ -1,0 +1,21 @@
+{% extends "master.html" %}
+{% load widget_tweaks %}
+{% block title %}Blogs-Crear{% endblock %}
+{% block content %}
+  <section class="background-color-custom1">
+    <br/>
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="card shadow p-4 border-top border-bottom border-3 border-color-custom1">
+        <div class="card-body">
+          <h5 class="card-title color-custom1">Registro de usuarios</h5>
+          <form method="post" action="" >
+            {% csrf_token %}
+            {{form}}
+            <br>
+            <button type="submit" class="btn btn-success">Grabar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
