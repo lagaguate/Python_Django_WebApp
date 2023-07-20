@@ -31,7 +31,7 @@ class Producto(models.Model):
     categorias = models.ForeignKey(CategoriaProducto,on_delete=models.CASCADE)
     descripcion = models.CharField(max_length=50) 
     imagen = models.ImageField(upload_to="tienda", null=True, blank=True)
-    precio = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True)
+    precio = models.DecimalField(blank=True, decimal_places=2, max_digits=12, null=True)
     disponibilidad = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

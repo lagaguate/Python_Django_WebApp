@@ -1,5 +1,6 @@
 {% extends "master.html" %}
 {% load widget_tweaks %}
+{% load crispy_forms_tags %}
 {% block title %}Blogs-Crear{% endblock %}
 {% block content %}
   <section class="background-color-custom1">
@@ -10,7 +11,7 @@
           <h5 class="card-title color-custom1">Registro de usuarios</h5>
           <form method="post" action="" >
             {% csrf_token %}
-            {{form}}
+            {{form|crispy}}
             <br>
             <button type="submit" class="btn btn-success">Grabar</button>
           </form>

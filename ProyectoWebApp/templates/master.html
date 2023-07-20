@@ -19,9 +19,17 @@
           href="{% static 'ProyectoWebApp/css/style.css' %}" />
   </head>
   <body>
-    <!--
-      Definicion de variables para URL
--->
+    <div class="d-flex align-items-end flex-column">
+      <div class="p-2">
+        {% if user.is_authenticated %}
+           Hola {{user.username}}, bienvenido &nbsp; &nbsp;
+           <a href="{% url 'cerrarsesion' %}"> Cerrar sesion</a>
+        {% else %}
+           <a href="{% url 'login' %}">Login</a> &nbsp; &nbsp; <a href="{% url 'autenticacion' %}"> Registro de usuario</a>
+        {% endif %}
+      
+    </div>
+  </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-lg-4"
          id="mainnav">
       <div class="collapse navbar-collapse" id="navbarResponsive">

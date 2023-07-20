@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.contrib.messages import constants as mess_error
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'generic_scaffold',
     'bootstrap5',
     'django_bootstrap_icons',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'widget_tweaks',
     'ProyectoWebApp',
     'servicios',
@@ -163,3 +166,18 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "x@gmail.com"
 EMAIL_HOST_PASSWORD = "x"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+#Definir los TAGS de error
+
+MESSAGE_TAGS = {
+    mess_error.DEBUG: 'debug',
+    mess_error.INFO: 'info',
+    mess_error.SUCCESS: 'success',
+    mess_error.WARNING: 'warning',
+    mess_error.ERROR: 'danger',
+
+}

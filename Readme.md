@@ -37,7 +37,10 @@ Codename: jammy
 >>> django.VERSION
 (4, 1, 0, 'final', 0)*
 
-El proyecto usa bootstrap5,  widget_tweaks
+Generar la dependecias del proyecto, utilice el siguiente comando
+```
+pip freeze > requirements.txt
+```
 
 ## Comandos Django
 
