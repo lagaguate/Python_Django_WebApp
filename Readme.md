@@ -7,7 +7,7 @@ Python_Django_WebApp
 
 **emails**: <lagaguate@yahoo.com, lagaguate@gmail.com>
 
-Ultimo Cambio: 29/06/23
+Ultimo Cambio: 21/07/23
 
 Tags: `Python`, `Django`
 
@@ -15,7 +15,7 @@ Tags: `Python`, `Django`
 
 Es un ejercicio utilizando Python + Django, basado en un video tutorial de **pildorasinformativas**.  Este proyecto tiene variantes, aunque reconozco que el video me ayudo abrir mas la menta con el desarrollo  de **Python** y **Django**.
 
-La intención dejar el código en Github para ayuda de otros que necesiten el código fuente.
+La intención dejar el código en Github para ayuda de otros que necesiten el código fuente.  Imposible detallar todo pero ojala el codigo sea facil de leer.
 
 [Curso Django. Introducción e Instalación.Vídeo 1 - YouTube](https://www.youtube.com/watch?v=7XO1AzwkPPE&list=PLU8oAlHdN5BmfvwxFO7HdPciOCmmYneAB) Curso Django
 
@@ -35,12 +35,17 @@ Codename: jammy
 *>>> import django
 
 >>> django.VERSION
-(4, 1, 0, 'final', 0)*
+(4.2.0. 'final', 0)*
 
 Generar la dependecias del proyecto, utilice el siguiente comando
 ```
 pip freeze > requirements.txt
 ```
+
+## Espicificaciones del proyecto
+1. Bases de datos: Sqlite
+2. IDE Visual Code 
+3. Creacion de varios proyectos:  AplicacionWEB, Servicios, Blos, Contatcto, Tienda, Carro, Pedidos
 
 ## Comandos Django
 
@@ -85,7 +90,9 @@ INSTALLED_APPS = [
     'servicios',
     'blogs',
     'contacto',
-    'tienda'
+    'tienda',
+    'carro',
+    'pedido',
 ]
 ```
 

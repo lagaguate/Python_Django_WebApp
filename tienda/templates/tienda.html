@@ -1,7 +1,7 @@
 {% extends "master.html" %}
 {% load static %}
 {% load bootstrap_icons %}
-{% load humanize %} 
+{% load humanize %}
 {% block title %}Tienda{% endblock %}
 {% block content %}
     <script type="text/javascript">
@@ -31,8 +31,11 @@
             </div>
             <div class="container">
                 <div class="float_items">
-                   
-                    {% include "carro/widget.html" %}
+                    {% if request.user.is_authenticated %}
+                        {% include "carro/widget.html" %}
+                    {% else %}
+                        {% if messagetotal %}<span class="alert alert-danger">{{ messagetotal }}</span>{% endif %}
+                    {% endif %}
                 </div>
             </div>
             <div class="row">
@@ -55,7 +58,8 @@
                                 <p class="card-text-tienda">Q{{ producto.precio|stringformat:".2f" |intcomma }}</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="{% url 'carro:agregarproducto' producto.id %}" class="btn btn-success">Agregar al carro</a>
+                                <a href="{% url 'carro:agregarproducto' producto.id %}"
+                                   class="btn btn-success">Agregar al carro</a>
                             </div>
                         </div>
                     </div>

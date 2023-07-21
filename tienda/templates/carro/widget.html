@@ -1,26 +1,32 @@
-{% load humanize %} 
+{% load humanize %}
 <table class="table">
     <thead>
+        <tr>
+            <th colspan="3" class="text-center">
+                <p>Compras carro</p>
+            </th>
+        </tr>
         <tr>
             <th scope="col">Producto</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Suma</th>
+            <th scope="col">+ / -</th>
         </tr>
     </thead>
     <tbody>
         {% if request.session.carro.items %}
             {% for key, value in request.session.carro.items %}
-            <tr >
-                <td class="text-start">{{value.nombre}}</td>
-                <td class="text-end">{{value.cantidad}}</td>
-                <td class="text-end">{{value.precio|stringformat:".2f" |intcomma}}   </td>
-
-                <td class="text-center">
-                    <a href="{% url 'carro:agregarproducto' value.producto_id %}" class="btn btn-success">+</a>
-                    <a href="{% url 'carro:restarproducto' value.producto_id %}" class="btn btn-success">-</a>
-                    
-                </td>
-            </tr>
+                <tr>
+                    <td class="text-start">{{ value.nombre }}</td>
+                    <td class="text-end">{{ value.cantidad }}</td>
+                    <td class="text-end">{{ value.precio|stringformat:".2f" |intcomma }}</td>
+                    <td class="text-center">
+                        <a href="{% url 'carro:agregarproducto' value.producto_id %}"
+                           class="btn btn-success">+</a>
+                        <a href="{% url 'carro:restarproducto' value.producto_id %}"
+                           class="btn btn-success">-</a>
+                    </td>
+                </tr>
             {% endfor %}
         {% else %}
             <tr>
@@ -32,9 +38,23 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="3">
+            <td colspan="3" class="text-end">
                 <p>Total: Q{{ importe_total_carro }}</p>
             </td>
         </tr>
+        {% if request.session.carro.items %}
+        <tr>
+            <td colspan="3" class="text-end">
+                <a href="{% url 'procesar_pedido' %}" class="btn btn-success">Hacer pedido</a>
+            </td>
+        </tr>
+        {% endif %}
+        {% if messagetotal %}
+            <tr>
+                <td colspan="3">
+                    <span class="alert alert-danger">{{ messagetotal }}</span>
+                </td>
+            </tr>
+        {% endif %}
     </tfoot>
 </table>
